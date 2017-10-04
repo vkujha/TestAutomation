@@ -27,7 +27,7 @@ Get Registration Entity Data Values
     \    Log    ${VALUE}
     \    Log    ${Key}
     \    Log    ${LableName}
-#    \    Run Keyword If    '${Key}' == 'FIRST NAME'    ${Result} = ${VALUE}
+##    \    Run Keyword If    '${Key}' == 'FIRST NAME'    ${Result} = ${VALUE}
     \    Log    ${Result}
     [Return]    ${VALUE}
 
