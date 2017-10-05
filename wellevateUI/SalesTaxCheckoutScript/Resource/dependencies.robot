@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation       Main, framework configuration file. Contains all include external libraries. Contains all framework configuration variables
-###### External Libraries ######
+###### External Libraries #######
 Library             Selenium2Library
 Library             String
 Library             OperatingSystem

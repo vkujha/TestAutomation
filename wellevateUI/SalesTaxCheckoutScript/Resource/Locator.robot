@@ -126,7 +126,7 @@ ${PatEmail}                         name=clientName
 ${PatPass}                          name=password
 
 
-#####################          Checkout Shop Dispensary  ##########################
+####################          Checkout Shop Dispensary  ##########################
 
 ${OutOFStockproductLocator}               xpath = //*[@ng-bind-html='vm.bodyText']
 ${ProductsList}                           xpath = //i[@title='Add item to Cart']
