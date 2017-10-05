@@ -12,7 +12,7 @@ Library           String
 *** Test Cases ***
 
 Checkout with Patient And Fetch Order ID
-    [Tags]      Login with Existing Patient >> Fetch Order Number >> Write in Excel
+    [Tags]      Login with Existing Patient >> Fetch Order Number >>>> Write in Excel
     @{GetRowNumberAndColumnNumber_List}   Create List   ${ExcelLocation1}, ${AppendOrderNo_Sheet}
     @{RowNumberAndColumnNumber}    FileReadAndWrite_FinalOne.getRowAndColumnNumbers     @{GetRowNumberAndColumnNumber_List}
     : FOR    ${RowNumber}    IN RANGE    1    ${RowNumberAndColumnNumber[0]}
