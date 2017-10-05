@@ -8,7 +8,7 @@ Resource            ../resources/dependencies.robot
 ${success_icon}                         css=i.success-icon
 
 *** Keywords ***
-######    Page Objects Functionality Extensions   #####
+######    Page Objects Functionality Extensions   ######
 
 
 ######    Framework Functionality Extensions   #####
