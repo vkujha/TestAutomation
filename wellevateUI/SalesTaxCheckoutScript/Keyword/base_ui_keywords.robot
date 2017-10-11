@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation       Page Objects Ancestor file. Contains extensions for Robot Framework and Common Keywords for Page Objects.
-Resource            ../resources/dependencies.robot
+#Resource            ../resources/dependencies.robot
 
 
 *** Variables ***

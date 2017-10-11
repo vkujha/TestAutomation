@@ -1,10 +1,10 @@
 *** Settings ***
 Library     Selenium2Library
 Resource         ../Resource/Input.robot
-Resource        ../LocatorAndInput/Locator.robot
+#Resource        ../LocatorAndInput/Locator.robot
 Resource        ../Keyword/base_ui_keywords.robot
 Resource        ../Keyword/WellevateLogin.robot
-Library            AutoItLibrary
+#Library            AutoItLibrary
 Library         ../Resource/FileReadAndWrite_FinalOne.py
 
 *** Keywords ***
@@ -240,20 +240,20 @@ Checkout With New Patient
     Payment Mode Selection
     Wait Until Element Is Visible    ${CardNextButton}      ${Timeout}
     Double Click Element   ${CardNextButton}
-    Sleep  10
+    Sleep  15
     Scroll Page    DOWN
     Wait Until Element Is Visible    ${PlaceOrder}      ${Timeout}
     Double Click Element    ${PlaceOrder}
-    Sleep  20
+    Sleep  25
     ${PO_NO}    Get Text   ${OrderNo}
     Log To Console    ${PO_NO}
 
     Log   ${PO_NO}
     @{ExcelFileWiteOrderNumberFile_List}   Create List   ${ExcelLocation1}, ${AppendOrderNo_Sheet}, ${RowNumber}, ${ColumnNumber}, ${PO_NO}
     FileReadAndWrite_FinalOne.appendExcel     @{ExcelFileWiteOrderNumberFile_List}
-
+    Sleep   5
     Order Status Assertion
-    Sleep  5
+    Sleep  10
     Close Browser Session
 
 
@@ -274,6 +274,7 @@ Add Multiple Items In Cart
     \  Sleep  8
     \  Double Click Element   ${AddToCartButton}
     \  Sleep   8
+
 
 No Item In Cart Check
 | | ${count} | Get matching xpath count | xpath=(//span[@ng-if='!match.model.header'])[1]
@@ -407,14 +408,16 @@ NavigateToAccountSettingPage
 
 Address Suggestion
 | | Sleep | 5
-
-| | ${count} | Get matching xpath count | xpath=//div[@id='qas-popup']/div[@class='box']//li
+#| | ${count} | Get matching xpath count | xpath=//div[@id='qas-popup']/div[@class='box']//li
+| | ${count} | Get matching xpath count | xpath=//div[@id='qas-popup']/div[@class='box']/p
 | | Sleep | 5
 | | Log To console | count of Element is: ${count}
-| | Run keyword if | "${count}" == "0"
-| | ... | Log To Console | the result is 0
-| | ... | ELSE
-| | ... | Select Address
+| | Run keyword if | "${count}" > "0"
+| | ... | Double Click Element | xpath = //a[@class='btn btn-primary step-continue']
+#| | ... | Log To Console | the result is 0
+#| | ... | Double Click Element | xpath = //a[@class='btn btn-primary step-continue']
+#| | ... | ELSE
+#| | ... | Double Click Element | xpath = //a[@class='btn btn-primary step-continue']
 
 
 Select Address
@@ -522,8 +525,10 @@ Registration With Non Taxable State
    Sleep   5
    NavigateToAccountSettingPage
 
+
 Dashboard Shop Displansary
     Double Click Element    ${DashabordShopDisplansary}
+
 
 Add Multiple Items In Cart by Shop Displansary
     [Arguments]
