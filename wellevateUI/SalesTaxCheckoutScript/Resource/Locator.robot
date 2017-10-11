@@ -56,10 +56,6 @@ ${ADditionalState}                     xpath=//select[@name='state']
 ${PractitionerRegistration}            xpath=//h1[@class='text-center']
 
 
-
-
-
-
 ${Password1}                            xpath=//input[@placeholder='PASSWORD']
 ${confirmPassword2}                     xpath=//input[@placeholder='CONFIRM PASSWORD']
 ${AccountImageLogo}                     xpath=//div[@class='circular']
@@ -82,8 +78,9 @@ ${ZipCode}                              name=postcode
 ${CompleteButton}                       xpath=//button[@type='submit']
 ${Payment_M}                            xpath=//ul[@id='payment_form_cryozonic_stripe']/li[1]/ul/li
 
-
+## Patient
 ${SearchIcon}                           xpath=//nav[@id='navbar-wsnyc']/ul[2]/li[3]/a/i
+## Practiotioner
 ${SearchIcon1}                          xpath=(//i[@class="fa fa-search fa-2x color-white"])[1]
 ${ProductSearchPlace}                   xpath=//section[@id='desktop-search']/form/input
 ${ClickOnProductFirst}                  xpath=(//span[@ng-if='!match.model.header'])[1]
@@ -134,3 +131,8 @@ ${DashabordShopDisplansary}            xpath = //a[@ui-sref='patient.dispensary'
 
 ${PractitionerSearch}                  xpath = //i[@class='fa fa-search fa-2x color-white']
 ${PrductCode_xpath}                    xpath = //small[@class='product-info-sku ng-binding']
+
+#####  Practitioner Dispansary   ######
+
+${Prac_Dispansary}                  xpath = //*[@id='sidebar-wrapper']/ul/li[4]/a
+${Prac_DispansarySearhBox}          xpath = //input[@id='search-box']

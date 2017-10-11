@@ -20,8 +20,8 @@ ${WellevateURL}           https://emerson:2016EmersonHTTP!%40%23@stage.wellevate
 #${WellevateURL}          http://emerson:2016EmersonHTTP!%40%23@well-qa2.wsnycdev.com/#/
 #${WellevateURL}          http://emerson:2016EmersonHTTP!%40%23@well-qa.wsnycdev.com/#/
 
-${FileName}            C:\\Users\\vivek.jha\\.p2\\PycharmWorkSpace\\Wellevate\\TestData\\RoboExcel.xlsx
-${FileLocation}        D:\\Images\\mini.jpeg
+#${FileName}            C:\\Users\\vivek.jha\\.p2\\PycharmWorkSpace\\Wellevate\\TestData\\RoboExcel.xlsx
+#${FileLocation}        D:\\Images\\mini.jpeg
 ${FName}               RobotOne
 ${LName}               RoboTwo
 ${Pass}                Pass@123
@@ -73,20 +73,18 @@ ${StateValueTaxable}          AL
 ${ZipCodeNameTaxable}         36542
 
 ${OrderNumber}                123456
-
-
 ${SheetName}            Registration
 
 #${SheetName}           Registration
 #${ExcelLocation}        C:\\Users\\jyoti.tiwari\\PycharmProjects\\Robot-Script\\Wellevate\\Resource\\EmersonEcologics.xls
 #${ExcelLocation}        C:\\Users\\jyoti\\PycharmProjects\\Robot-Script\\Wellevate\\Resource\\EmersonEcologics.xls
+#${ExcelLocation1}       C:\\Users\\jyoti.tiwari\\PycharmProjects\\Robot-Script\\Wellevate\\Resource\\WellweteTextCases.xls
 
 ${PO_NO}
 
 
-#${ExcelLocation1}       C:\\Users\\jyoti.tiwari\\PycharmProjects\\Robot-Script\\Wellevate\\Resource\\WellweteTextCases.xls
 
-${ExcelLocation1}         SalesTaxCheckoutScript\\TestData\\WellweteTextCases.xls
+${ExcelLocation1}         SalesTaxCheckoutScript/TestData/WellweteTextCases.xls
 #${ExcelLocation1}        SalesTaxCheckoutScript\\Resource\\WellweteTextCases.xls
 #${ExcelLocation1}        Wellevate_9.23\\Resource\\WellweteTextCases.xls
 ${PracReg_Sheet}         PractitionerRegistration
