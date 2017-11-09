@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20171109 20:26:07.955" generator="Robot 2.9.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\TestSuites\OldEmersonLogin.robot" id="s1" name="OldEmersonLogin">
+<test id="s1-t1" name="[Test Cases TC003 oldEmerson Login With Normal User For App will be Redirect To Redesign New -From Iframe Login ]">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${OldEmerson}</arg>
+</arguments>
+<assign>
+<var>@{GetRowNumberAndColumnNumber_List}</var>
+</assign>
+<msg timestamp="20171109 20:26:09.972" level="INFO">@{GetRowNumberAndColumnNumber_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OldEmerson ]</msg>
+<status status="PASS" endtime="20171109 20:26:09.973" starttime="20171109 20:26:09.971"></status>
+</kw>
+<kw name="Get Row And Column Numbers" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{GetRowNumberAndColumnNumber_List}</arg>
+</arguments>
+<assign>
+<var>@{RowNumberAndColumnNumber}</var>
+</assign>
+<msg timestamp="20171109 20:26:10.016" level="INFO">@{RowNumberAndColumnNumber} = [ 2 | 3 ]</msg>
+<status status="PASS" endtime="20171109 20:26:10.016" starttime="20171109 20:26:09.973"></status>
+</kw>
+<kw type="for" name="${RowNumber} IN RANGE [ 1 | ${RowNumberAndColumnNumber[0]} ]">
+<kw type="foritem" name="${RowNumber} = 1">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${OldEmerson}, ${RowNumber}</arg>
+</arguments>
+<assign>
+<var>@{ExcelFileReadDataFromExcel_List}</var>
+</assign>
+<msg timestamp="20171109 20:26:10.019" level="INFO">@{ExcelFileReadDataFromExcel_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OldEmerson, 1 ]</msg>
+<status status="PASS" endtime="20171109 20:26:10.019" starttime="20171109 20:26:10.018"></status>
+</kw>
+<kw name="Read Excel Data" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{ExcelFileReadDataFromExcel_List}</arg>
+</arguments>
+<assign>
+<var>@{ReadInputDataList}</var>
+</assign>
+<msg timestamp="20171109 20:26:10.047" level="INFO">2
+3
+1
+0
+1
+1
+1
+2</msg>
+<msg timestamp="20171109 20:26:10.047" level="INFO">@{ReadInputDataList} = [ Chrome | testprac3105@mailinator.com | Well@123 ]</msg>
+<status status="PASS" endtime="20171109 20:26:10.048" starttime="20171109 20:26:10.019"></status>
+</kw>
+<kw name="Launch Browser For Old QA" library="OldEmersonLogin">
+<arguments>
+<arg>${ReadInputDataList[0]}</arg>
+</arguments>
+<kw name="SelectBrowser" library="OldEmersonLogin">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Browser Is ${Browser}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:26:10.051" starttime="20171109 20:26:10.050"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${Browser}" == "Chrome"</arg>
+<arg>ChromeCompatible</arg>
+<arg>ELSE</arg>
+<arg>FirefoxCompatible</arg>
+</arguments>
+<kw name="ChromeCompatible" library="OldEmersonLogin">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${OldEmersonURL}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20171109 20:26:10.055" level="INFO">Opening browser 'Chrome' to base url 'https://qa.emersonecologics.com/User/Login.aspx'</msg>
+<status status="PASS" endtime="20171109 20:26:28.276" starttime="20171109 20:26:10.054"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:26:28.277" starttime="20171109 20:26:10.053"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:26:28.279" starttime="20171109 20:26:10.052"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:26:28.281" starttime="20171109 20:26:10.049"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20171109 20:26:29.476" starttime="20171109 20:26:28.283"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:26:29.477" starttime="20171109 20:26:10.048"></status>
+</kw>
+<kw name="OLD QA Login in Diff Frame" library="OldEmersonLogin">
+<arguments>
+<arg>${ReadInputDataList[1]}</arg>
+<arg>${ReadInputDataList[2]}</arg>
+</arguments>
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>//iframe[@id="ctrlLoginSSL_ifLogin"]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171109 20:26:29.507" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171109 20:26:29.508" starttime="20171109 20:26:29.478"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Frame Size is ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:26:29.509" starttime="20171109 20:26:29.508"></status>
+</kw>
+<kw name="Select Frame" library="Selenium2Library">
+<doc>Sets frame identified by `locator` as current frame.</doc>
+<arguments>
+<arg>${LoginFrame}</arg>
+</arguments>
+<msg timestamp="20171109 20:26:29.510" level="INFO">Selecting frame 'xpath=//iframe[@id="ctrlLoginSSL_ifLogin"]'.</msg>
+<status status="PASS" endtime="20171109 20:26:29.535" starttime="20171109 20:26:29.509"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${userNameF}</arg>
+<arg>${UName}</arg>
+</arguments>
+<msg timestamp="20171109 20:26:29.537" level="INFO">Typing text 'testprac3105@mailinator.com' into text field 'id=txtEmail'</msg>
+<status status="PASS" endtime="20171109 20:26:29.735" starttime="20171109 20:26:29.536"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PasswordF}</arg>
+<arg>${PWord}</arg>
+</arguments>
+<msg timestamp="20171109 20:26:29.736" level="INFO">Typing text 'Well@123' into text field 'id=txtPassword'</msg>
+<status status="PASS" endtime="20171109 20:26:29.833" starttime="20171109 20:26:29.736"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${LoginButtonAtPopUpF}</arg>
+</arguments>
+<msg timestamp="20171109 20:26:29.834" level="INFO">Clicking button 'id=cmdLogin'.</msg>
+<status status="PASS" endtime="20171109 20:26:29.955" starttime="20171109 20:26:29.834"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:26:29.956" starttime="20171109 20:26:29.477"></status>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current location.</doc>
+<assign>
+<var>${Location}</var>
+</assign>
+<msg timestamp="20171109 20:26:35.618" level="INFO">${Location} = https://qa.emersonecologics.com/User/LoginFrame.aspx?redir=%2fUser%2fLogin.aspx</msg>
+<status status="PASS" endtime="20171109 20:26:35.619" starttime="20171109 20:26:29.956"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${Location}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:26:35.624" starttime="20171109 20:26:35.621"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${WelcomePOPUP}</arg>
+<arg>60</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:26:59.522" starttime="20171109 20:26:35.626"></status>
+</kw>
+<kw name="Verify Redirection From OLD TO New Website" library="OldEmersonLogin">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171109 20:27:09.524" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171109 20:27:09.525" starttime="20171109 20:26:59.523"></status>
+</kw>
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=//div[@class='ng-binding layout-align-center-center layout-column']/h1</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171109 20:27:09.561" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171109 20:27:09.561" starttime="20171109 20:27:09.527"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:09.566" starttime="20171109 20:27:09.563"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${count}" == "1"</arg>
+<arg>Log To console</arg>
+<arg>${count}</arg>
+<arg>ELSE</arg>
+<arg>Log To console</arg>
+<arg>${count}</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:09.577" starttime="20171109 20:27:09.574"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:09.578" starttime="20171109 20:27:09.568"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:09.580" starttime="20171109 20:26:59.522"></status>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20171109 20:27:12.775" starttime="20171109 20:27:09.581"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:12.776" starttime="20171109 20:26:10.017"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:12.777" starttime="20171109 20:26:10.017"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:12.779" critical="yes" starttime="20171109 20:26:09.970"></status>
+</test>
+<test id="s1-t2" name="[Test Cases TC005 oldEmerson Login With Normal User For App will be Redirect To Redesign New -From Iframe Login on IE Browser]">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${OldEmerson}</arg>
+</arguments>
+<assign>
+<var>@{GetRowNumberAndColumnNumber_List}</var>
+</assign>
+<msg timestamp="20171109 20:27:12.791" level="INFO">@{GetRowNumberAndColumnNumber_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OldEmerson ]</msg>
+<status status="PASS" endtime="20171109 20:27:12.791" starttime="20171109 20:27:12.787"></status>
+</kw>
+<kw name="Get Row And Column Numbers" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{GetRowNumberAndColumnNumber_List}</arg>
+</arguments>
+<assign>
+<var>@{RowNumberAndColumnNumber}</var>
+</assign>
+<msg timestamp="20171109 20:27:12.853" level="INFO">@{RowNumberAndColumnNumber} = [ 2 | 3 ]</msg>
+<status status="PASS" endtime="20171109 20:27:12.853" starttime="20171109 20:27:12.793"></status>
+</kw>
+<kw type="for" name="${RowNumber} IN RANGE [ 1 | ${RowNumberAndColumnNumber[0]} ]">
+<kw type="foritem" name="${RowNumber} = 1">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${OldEmerson}, ${RowNumber}</arg>
+</arguments>
+<assign>
+<var>@{ExcelFileReadDataFromExcel_List}</var>
+</assign>
+<msg timestamp="20171109 20:27:12.856" level="INFO">@{ExcelFileReadDataFromExcel_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OldEmerson, 1 ]</msg>
+<status status="PASS" endtime="20171109 20:27:12.856" starttime="20171109 20:27:12.855"></status>
+</kw>
+<kw name="Read Excel Data" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{ExcelFileReadDataFromExcel_List}</arg>
+</arguments>
+<assign>
+<var>@{ReadInputDataList}</var>
+</assign>
+<msg timestamp="20171109 20:27:12.884" level="INFO">2
+3
+1
+0
+1
+1
+1
+2</msg>
+<msg timestamp="20171109 20:27:12.884" level="INFO">@{ReadInputDataList} = [ Chrome | testprac3105@mailinator.com | Well@123 ]</msg>
+<status status="PASS" endtime="20171109 20:27:12.884" starttime="20171109 20:27:12.856"></status>
+</kw>
+<kw name="Launch Browser For Old Emerson-IE Browser" library="OldEmersonLogin">
+<kw name="Set Environment Variable" library="OperatingSystem">
+<doc>Sets an environment variable to a specified value.</doc>
+<arguments>
+<arg>webdriver.ie.driver</arg>
+<arg>C:\\Users\\vivek.jha\\git\\QaAutomation\\RobotTests\\wellevateUI\\Driver\\IEDriverServer.exe</arg>
+</arguments>
+<msg timestamp="20171109 20:27:12.886" level="INFO">Environment variable 'webdriver.ie.driver' set to value 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\Driver\IEDriverServer.exe'.</msg>
+<status status="PASS" endtime="20171109 20:27:12.887" starttime="20171109 20:27:12.886"></status>
+</kw>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${OldEmersonURL}</arg>
+<arg>ie</arg>
+</arguments>
+<msg timestamp="20171109 20:27:12.888" level="INFO">Opening browser 'ie' to base url 'https://qa.emersonecologics.com/User/Login.aspx'</msg>
+<status status="PASS" endtime="20171109 20:27:29.485" starttime="20171109 20:27:12.887"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:29.486" starttime="20171109 20:27:12.885"></status>
+</kw>
+<kw name="OLD QA Login in Diff Frame" library="OldEmersonLogin">
+<arguments>
+<arg>${ReadInputDataList[1]}</arg>
+<arg>${ReadInputDataList[2]}</arg>
+</arguments>
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>//iframe[@id="ctrlLoginSSL_ifLogin"]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171109 20:27:29.595" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171109 20:27:29.595" starttime="20171109 20:27:29.489"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Frame Size is ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:29.597" starttime="20171109 20:27:29.595"></status>
+</kw>
+<kw name="Select Frame" library="Selenium2Library">
+<doc>Sets frame identified by `locator` as current frame.</doc>
+<arguments>
+<arg>${LoginFrame}</arg>
+</arguments>
+<msg timestamp="20171109 20:27:29.598" level="INFO">Selecting frame 'xpath=//iframe[@id="ctrlLoginSSL_ifLogin"]'.</msg>
+<status status="PASS" endtime="20171109 20:27:29.668" starttime="20171109 20:27:29.597"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${userNameF}</arg>
+<arg>${UName}</arg>
+</arguments>
+<msg timestamp="20171109 20:27:29.670" level="INFO">Typing text 'testprac3105@mailinator.com' into text field 'id=txtEmail'</msg>
+<status status="PASS" endtime="20171109 20:27:30.203" starttime="20171109 20:27:29.669"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PasswordF}</arg>
+<arg>${PWord}</arg>
+</arguments>
+<msg timestamp="20171109 20:27:30.204" level="INFO">Typing text 'Well@123' into text field 'id=txtPassword'</msg>
+<status status="PASS" endtime="20171109 20:27:30.594" starttime="20171109 20:27:30.203"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${LoginButtonAtPopUpF}</arg>
+</arguments>
+<msg timestamp="20171109 20:27:30.595" level="INFO">Clicking button 'id=cmdLogin'.</msg>
+<status status="PASS" endtime="20171109 20:27:39.638" starttime="20171109 20:27:30.594"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:39.639" starttime="20171109 20:27:29.487"></status>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current location.</doc>
+<assign>
+<var>${Location}</var>
+</assign>
+<msg timestamp="20171109 20:27:39.666" level="INFO">${Location} = https://qa.emersonecologics.com/nocredential</msg>
+<status status="PASS" endtime="20171109 20:27:39.666" starttime="20171109 20:27:39.640"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${Location}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:39.668" starttime="20171109 20:27:39.666"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${OldEmersonLogo}</arg>
+<arg>60</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:39.775" starttime="20171109 20:27:39.668"></status>
+</kw>
+<kw name="Verify No Redirection From OLD TO New Website" library="OldEmersonLogin">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171109 20:27:49.777" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171109 20:27:49.777" starttime="20171109 20:27:39.777"></status>
+</kw>
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=//a[@id='hypHome']/img</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171109 20:27:49.815" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171109 20:27:49.815" starttime="20171109 20:27:49.778"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:49.816" starttime="20171109 20:27:49.815"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${count}" == "1"</arg>
+<arg>Log To console</arg>
+<arg>Not Redirected To New Emerson</arg>
+<arg>ELSE</arg>
+<arg>Log To console</arg>
+<arg>Rediredted To New Emerson</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Not Redirected To New Emerson</arg>
+</arguments>
+<status status="PASS" endtime="20171109 20:27:49.819" starttime="20171109 20:27:49.818"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:49.819" starttime="20171109 20:27:49.817"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:49.820" starttime="20171109 20:27:39.776"></status>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20171109 20:27:52.996" starttime="20171109 20:27:49.820"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:52.997" starttime="20171109 20:27:12.854"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:52.998" starttime="20171109 20:27:12.854"></status>
+</kw>
+<status status="PASS" endtime="20171109 20:27:53.000" critical="yes" starttime="20171109 20:27:12.783"></status>
+</test>
+<status status="PASS" endtime="20171109 20:27:53.005" starttime="20171109 20:26:07.959"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="OldEmersonLogin" pass="2">OldEmersonLogin</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20171109 20:26:09.336" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Resource\OldEmersonInput.robot': Data source does not exist.</msg>
+<msg timestamp="20171109 20:26:09.864" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Resource\OldEmersonLocator.robot': Data source does not exist.</msg>
+<msg timestamp="20171109 20:26:09.936" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Keyword\base_ui_keywords.robot': Resource file '..\resources\dependencies.robot' does not exist.</msg>
+</errors>
+</robot>

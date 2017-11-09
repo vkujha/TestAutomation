@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20171011 12:01:36.067" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\TestSuites\SalesTaxPlacingOrder.robot" id="s1" name="SalesTaxPlacingOrder">
+<test id="s1-t1" name="Checkout with Patient And Fetch Order ID">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${AppendOrderNo_Sheet}</arg>
+</arguments>
+<assign>
+<var>@{GetRowNumberAndColumnNumber_List}</var>
+</assign>
+<msg timestamp="20171011 12:01:38.345" level="INFO">@{GetRowNumberAndColumnNumber_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OrderIDFetch ]</msg>
+<status status="PASS" endtime="20171011 12:01:38.345" starttime="20171011 12:01:38.345"></status>
+</kw>
+<kw name="Get Row And Column Numbers" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{GetRowNumberAndColumnNumber_List}</arg>
+</arguments>
+<assign>
+<var>@{RowNumberAndColumnNumber}</var>
+</assign>
+<msg timestamp="20171011 12:01:38.417" level="INFO">@{RowNumberAndColumnNumber} = [ 17 | 10 ]</msg>
+<status status="PASS" endtime="20171011 12:01:38.417" starttime="20171011 12:01:38.346"></status>
+</kw>
+<kw type="for" name="${RowNumber} IN RANGE [ 1 | ${RowNumberAndColumnNumber[0]} ]">
+<kw type="foritem" name="${RowNumber} = 1">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${AppendOrderNo_Sheet}, ${RowNumber}</arg>
+</arguments>
+<assign>
+<var>@{ExcelFileReadDataFromExcel_List}</var>
+</assign>
+<msg timestamp="20171011 12:01:38.419" level="INFO">@{ExcelFileReadDataFromExcel_List} = [ SalesTaxCheckoutScript\TestData\WellweteTextCases.xls, OrderIDFetch, 1 ]</msg>
+<status status="PASS" endtime="20171011 12:01:38.419" starttime="20171011 12:01:38.418"></status>
+</kw>
+<kw name="Read Excel Data" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>@{ExcelFileReadDataFromExcel_List}</arg>
+</arguments>
+<assign>
+<var>@{ReadInputDataList}</var>
+</assign>
+<msg timestamp="20171011 12:01:38.445" level="INFO">17
+10
+1
+0
+1
+1
+1
+2
+1
+3
+1
+4
+1
+5
+1
+6
+1
+7
+1
+8
+1
+9</msg>
+<msg timestamp="20171011 12:01:38.467" level="INFO">@{ReadInputDataList} = [ wellevatetax+651@gmail.com | Well@123 | AT1004/N8206 | 60.0 | Mr X | 4.11111e+15 | 111.0 | 1.0 | 2019.0 |  ]</msg>
+<status status="PASS" endtime="20171011 12:01:38.467" starttime="20171011 12:01:38.419"></status>
+</kw>
+<kw name="Launch Browser" library="WellevateLogin">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${WellevateURL}</arg>
+<arg>${Browser}</arg>
+</arguments>
+<msg timestamp="20171011 12:01:38.468" level="INFO">Opening browser 'CHROME' to base url 'http://emerson:2016EmersonHTTP!%40%23@well-qa.wsnycdev.com/#/'</msg>
+<status status="PASS" endtime="20171011 12:02:07.255" starttime="20171011 12:01:38.467"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20171011 12:02:08.412" starttime="20171011 12:02:07.256"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:02:08.413" starttime="20171011 12:01:38.467"></status>
+</kw>
+<kw name="Login with Patient and Practitioner" library="WellevateLogin">
+<arguments>
+<arg>${ReadInputDataList[0]}</arg>
+<arg>${ReadInputDataList[1]}</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>22</arg>
+</arguments>
+<msg timestamp="20171011 12:02:30.415" level="INFO">Slept 22 seconds</msg>
+<status status="PASS" endtime="20171011 12:02:30.415" starttime="20171011 12:02:08.413"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${LoginButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:30.415" level="INFO">Double clicking element 'id= login-dialog'.</msg>
+<status status="PASS" endtime="20171011 12:02:30.481" starttime="20171011 12:02:30.415"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:02:35.483" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:02:35.483" starttime="20171011 12:02:30.481"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${userName}</arg>
+<arg>${UName}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:35.485" level="INFO">Typing text 'wellevatetax+651@gmail.com' into text field 'id= email'</msg>
+<status status="PASS" endtime="20171011 12:02:35.777" starttime="20171011 12:02:35.484"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${Password}</arg>
+<arg>${PWord}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:35.778" level="INFO">Typing text 'Well@123' into text field 'id=password'</msg>
+<status status="PASS" endtime="20171011 12:02:35.910" starttime="20171011 12:02:35.777"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171011 12:02:45.911" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171011 12:02:45.911" starttime="20171011 12:02:35.910"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${LoginButtonAtPopUp}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:45.911" level="INFO">Clicking button 'xpath=//button[@class='btn btn-primary btn-w-lg input-form ng-binding']'.</msg>
+<status status="PASS" endtime="20171011 12:02:46.013" starttime="20171011 12:02:45.911"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:02:46.013" starttime="20171011 12:02:08.413"></status>
+</kw>
+<kw name="Checkout With New Patient" library="WellevateRegistration">
+<arguments>
+<arg>${RowNumber}</arg>
+<arg>${ColumnNumber}</arg>
+<arg>${ReadInputDataList[2]}</arg>
+<arg>${ReadInputDataList[3]}</arg>
+<arg>${ReadInputDataList[4]}</arg>
+<arg>${ReadInputDataList[5]}</arg>
+<arg>${ReadInputDataList[6]}</arg>
+<arg>${ReadInputDataList[7]}}</arg>
+<arg>${ReadInputDataList[8]}</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171011 12:02:56.016" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171011 12:02:56.016" starttime="20171011 12:02:46.014"></status>
+</kw>
+<kw name="Add Multiple Items In Cart2" library="WellevateRegistration">
+<arguments>
+<arg>${Items}</arg>
+</arguments>
+<kw name="Splitwith Seperator" library="FileReadAndWrite_FinalOne">
+<arguments>
+<arg>${Items}</arg>
+</arguments>
+<assign>
+<var>@{ItemList}</var>
+</assign>
+<msg timestamp="20171011 12:02:56.029" level="INFO">AT1004/N8206
+[u'AT1004', u'N8206']</msg>
+<msg timestamp="20171011 12:02:56.030" level="INFO">@{ItemList} = [ AT1004 | N8206 ]</msg>
+<status status="PASS" endtime="20171011 12:02:56.030" starttime="20171011 12:02:56.019"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ItemList}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:56.032" level="INFO">[u'AT1004', u'N8206']</msg>
+<status status="PASS" endtime="20171011 12:02:56.032" starttime="20171011 12:02:56.031"></status>
+</kw>
+<kw type="for" name="${ItemList} IN [ @{ItemList} ]">
+<kw type="foritem" name="${ItemList} = AT1004">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ItemList}</arg>
+</arguments>
+<msg timestamp="20171011 12:02:56.034" level="INFO">AT1004</msg>
+<status status="PASS" endtime="20171011 12:02:56.050" starttime="20171011 12:02:56.033"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:03:04.051" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:04.051" starttime="20171011 12:02:56.050"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${SearchIcon}</arg>
+</arguments>
+<msg timestamp="20171011 12:03:04.053" level="INFO">Double clicking element 'xpath=//nav[@id='navbar-wsnyc']/ul[2]/li[3]/a/i'.</msg>
+<status status="PASS" endtime="20171011 12:03:04.162" starttime="20171011 12:03:04.052"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>9</arg>
+</arguments>
+<msg timestamp="20171011 12:03:13.163" level="INFO">Slept 9 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:13.163" starttime="20171011 12:03:04.163"></status>
+</kw>
+<kw name="Clear Element Text" library="Selenium2Library">
+<doc>Clears the text value of text entry element identified by `locator`.</doc>
+<arguments>
+<arg>${ProductSearchPlace}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:03:13.259" starttime="20171011 12:03:13.164"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${ProductSearchPlace}</arg>
+<arg>${ItemList}</arg>
+</arguments>
+<msg timestamp="20171011 12:03:13.260" level="INFO">Typing text 'AT1004' into text field 'xpath=//section[@id='desktop-search']/form/input'</msg>
+<status status="PASS" endtime="20171011 12:03:13.354" starttime="20171011 12:03:13.260"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:03:21.354" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:21.354" starttime="20171011 12:03:13.354"></status>
+</kw>
+<kw name="No Item In Cart Check" library="WellevateRegistration">
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171011 12:03:21.408" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171011 12:03:21.408" starttime="20171011 12:03:21.356"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Count of Cart Element Size ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:03:21.410" starttime="20171011 12:03:21.409"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:03:21.411" starttime="20171011 12:03:21.410"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:03:26.411" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:26.411" starttime="20171011 12:03:21.411"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<msg timestamp="20171011 12:03:26.414" level="INFO">Double clicking element 'xpath=(//span[@ng-if='!match.model.header'])[1]'.</msg>
+<status status="PASS" endtime="20171011 12:03:26.516" starttime="20171011 12:03:26.413"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:03:26.517" starttime="20171011 12:03:26.412"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:03:31.517" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:31.517" starttime="20171011 12:03:26.517"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=//a[@ng-click='vm.addToCart(vm.quantity)']</arg>
+</arguments>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@ng-click='vm.addToCart(vm.quantity)']</arg>
+</arguments>
+<msg timestamp="20171011 12:03:31.518" level="INFO">Double clicking element 'xpath=//a[@ng-click='vm.addToCart(vm.quantity)']'.</msg>
+<status status="PASS" endtime="20171011 12:03:31.607" starttime="20171011 12:03:31.518"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:03:31.607" starttime="20171011 12:03:31.517"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:03:36.608" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:36.608" starttime="20171011 12:03:31.608"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 0</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=(//span[@class='search-close link absolute'])[2]</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:03:36.610" starttime="20171011 12:03:36.609"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:03:36.611" starttime="20171011 12:03:21.355"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:03:44.612" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:44.612" starttime="20171011 12:03:36.611"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:03:44.612" starttime="20171011 12:02:56.033"></status>
+</kw>
+<kw type="foritem" name="${ItemList} = N8206">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ItemList}</arg>
+</arguments>
+<msg timestamp="20171011 12:03:44.612" level="INFO">N8206</msg>
+<status status="PASS" endtime="20171011 12:03:44.613" starttime="20171011 12:03:44.612"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:03:52.613" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:03:52.613" starttime="20171011 12:03:44.613"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${SearchIcon}</arg>
+</arguments>
+<msg timestamp="20171011 12:03:52.613" level="INFO">Double clicking element 'xpath=//nav[@id='navbar-wsnyc']/ul[2]/li[3]/a/i'.</msg>
+<status status="PASS" endtime="20171011 12:03:52.637" starttime="20171011 12:03:52.613"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>9</arg>
+</arguments>
+<msg timestamp="20171011 12:04:01.637" level="INFO">Slept 9 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:01.637" starttime="20171011 12:03:52.637"></status>
+</kw>
+<kw name="Clear Element Text" library="Selenium2Library">
+<doc>Clears the text value of text entry element identified by `locator`.</doc>
+<arguments>
+<arg>${ProductSearchPlace}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:04:01.672" starttime="20171011 12:04:01.637"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${ProductSearchPlace}</arg>
+<arg>${ItemList}</arg>
+</arguments>
+<msg timestamp="20171011 12:04:01.673" level="INFO">Typing text 'N8206' into text field 'xpath=//section[@id='desktop-search']/form/input'</msg>
+<status status="PASS" endtime="20171011 12:04:01.758" starttime="20171011 12:04:01.672"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:04:09.760" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:09.761" starttime="20171011 12:04:01.759"></status>
+</kw>
+<kw name="No Item In Cart Check" library="WellevateRegistration">
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171011 12:04:09.793" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171011 12:04:09.794" starttime="20171011 12:04:09.763"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Count of Cart Element Size ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:04:09.796" starttime="20171011 12:04:09.794"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:04:09.798" starttime="20171011 12:04:09.796"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:04:14.799" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:14.799" starttime="20171011 12:04:09.798"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=(//span[@ng-if='!match.model.header'])[1]</arg>
+</arguments>
+<msg timestamp="20171011 12:04:14.802" level="INFO">Double clicking element 'xpath=(//span[@ng-if='!match.model.header'])[1]'.</msg>
+<status status="PASS" endtime="20171011 12:04:14.921" starttime="20171011 12:04:14.802"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:14.922" starttime="20171011 12:04:14.800"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:04:19.922" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:19.922" starttime="20171011 12:04:14.922"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=//a[@ng-click='vm.addToCart(vm.quantity)']</arg>
+</arguments>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@ng-click='vm.addToCart(vm.quantity)']</arg>
+</arguments>
+<msg timestamp="20171011 12:04:19.925" level="INFO">Double clicking element 'xpath=//a[@ng-click='vm.addToCart(vm.quantity)']'.</msg>
+<status status="PASS" endtime="20171011 12:04:20.017" starttime="20171011 12:04:19.924"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:20.017" starttime="20171011 12:04:19.923"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:04:25.018" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:25.018" starttime="20171011 12:04:20.017"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 0</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=(//span[@class='search-close link absolute'])[2]</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:04:25.020" starttime="20171011 12:04:25.019"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:25.020" starttime="20171011 12:04:09.761"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8</arg>
+</arguments>
+<msg timestamp="20171011 12:04:33.021" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:33.021" starttime="20171011 12:04:25.021"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:33.021" starttime="20171011 12:03:44.612"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:33.021" starttime="20171011 12:02:56.032"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:04:33.022" starttime="20171011 12:02:56.017"></status>
+</kw>
+<kw name="Condition" library="WellevateRegistration">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@class='navbar--item']/span</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171011 12:04:33.124" level="INFO">${count} = 2</msg>
+<status status="PASS" endtime="20171011 12:04:33.124" starttime="20171011 12:04:33.024"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:04:33.125" starttime="20171011 12:04:33.124"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${count}" == "0"</arg>
+<arg>Close Browser Session</arg>
+<arg>ELSE</arg>
+<arg>CheckoutAfter AddToCart</arg>
+</arguments>
+<kw name="CheckoutAfter AddToCart" library="WellevateRegistration">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20171011 12:04:53.126" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" endtime="20171011 12:04:53.126" starttime="20171011 12:04:33.126"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${CartIcon}</arg>
+</arguments>
+<msg timestamp="20171011 12:04:53.128" level="INFO">Double clicking element 'xpath=//a[@ng-click='vm.toggleCartMenu($event)']'.</msg>
+<status status="PASS" endtime="20171011 12:04:53.218" starttime="20171011 12:04:53.127"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171011 12:05:03.220" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:03.220" starttime="20171011 12:04:53.219"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${CheckoutButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:05:03.221" level="INFO">Double clicking element 'xpath=//div[@class='row product text-center']/a[2]'.</msg>
+<status status="PASS" endtime="20171011 12:05:03.289" starttime="20171011 12:05:03.220"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20171011 12:05:23.290" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:23.290" starttime="20171011 12:05:03.290"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${SameAddressRadioButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:05:23.290" level="INFO">Double clicking element 'xpath=//form[@id='co-billing-form']/div/ul/li[3]/div[1]/label'.</msg>
+<status status="PASS" endtime="20171011 12:05:23.349" starttime="20171011 12:05:23.290"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:05:28.349" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:28.349" starttime="20171011 12:05:23.349"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${ContinueButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:05:28.351" level="INFO">Double clicking element 'xpath=//button[@ng-click='trackCheckoutBilling()']/span'.</msg>
+<status status="PASS" endtime="20171011 12:05:28.503" starttime="20171011 12:05:28.350"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>13</arg>
+</arguments>
+<msg timestamp="20171011 12:05:41.503" level="INFO">Slept 13 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:41.503" starttime="20171011 12:05:28.503"></status>
+</kw>
+<kw name="Address Suggestion" library="WellevateRegistration">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:05:46.508" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:46.508" starttime="20171011 12:05:41.508"></status>
+</kw>
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=//div[@id='qas-popup']/div[@class='box']//li</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171011 12:05:46.549" level="INFO">${count} = 0</msg>
+<status status="PASS" endtime="20171011 12:05:46.550" starttime="20171011 12:05:46.509"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:05:51.550" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:05:51.550" starttime="20171011 12:05:46.550"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>count of Element is: ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:05:51.552" starttime="20171011 12:05:51.551"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${count}" == "0"</arg>
+<arg>Log To Console</arg>
+<arg>the result is 0</arg>
+<arg>ELSE</arg>
+<arg>Select Address</arg>
+</arguments>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>the result is 0</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:05:51.556" starttime="20171011 12:05:51.555"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:05:51.556" starttime="20171011 12:05:51.553"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:05:51.557" starttime="20171011 12:05:41.504"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>30</arg>
+</arguments>
+<msg timestamp="20171011 12:06:21.558" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" endtime="20171011 12:06:21.558" starttime="20171011 12:05:51.557"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${NextDayAir}</arg>
+<arg>${Timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:06:21.643" starttime="20171011 12:06:21.559"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:06:26.644" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:06:26.644" starttime="20171011 12:06:21.644"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${NextDayAir}</arg>
+</arguments>
+<msg timestamp="20171011 12:06:26.646" level="INFO">Double clicking element 'xpath=//label[@for='s_method_dispensary_shipping_nda']'.</msg>
+<status status="PASS" endtime="20171011 12:06:26.750" starttime="20171011 12:06:26.645"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>13</arg>
+</arguments>
+<msg timestamp="20171011 12:06:39.751" level="INFO">Slept 13 seconds</msg>
+<status status="PASS" endtime="20171011 12:06:39.751" starttime="20171011 12:06:26.751"></status>
+</kw>
+<kw name="Scroll Page" library="base_ui_keywords">
+<doc>Scrolling current page [UP] or [DOWN]</doc>
+<arguments>
+<arg>DOWN</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${direction}'=='DOWN'</arg>
+<arg>Execute JavaScript</arg>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+</arguments>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+</arguments>
+<msg timestamp="20171011 12:06:39.753" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight)</msg>
+<status status="PASS" endtime="20171011 12:06:39.767" starttime="20171011 12:06:39.753"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:06:39.767" starttime="20171011 12:06:39.752"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${direction}'=='UP'</arg>
+<arg>Execute JavaScript</arg>
+<arg>window.scrollTo(0, 0);</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:06:39.768" starttime="20171011 12:06:39.768"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:06:39.769" starttime="20171011 12:06:39.751"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20171011 12:06:44.769" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20171011 12:06:44.769" starttime="20171011 12:06:39.769"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${ShippingMethodNextStepButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:06:44.770" level="INFO">Double clicking element 'xpath=//div[@id='shipping-method-buttons-container']/button'.</msg>
+<status status="PASS" endtime="20171011 12:06:44.880" starttime="20171011 12:06:44.770"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20171011 12:07:04.880" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" endtime="20171011 12:07:04.880" starttime="20171011 12:06:44.880"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Get Element Attribute</arg>
+<arg>${Payment_M}@class</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:04.882" starttime="20171011 12:07:04.881"></status>
+</kw>
+<kw name="Payment Mode Selection" library="WellevateRegistration">
+<kw name="Get Matching Xpath Count" library="Selenium2Library">
+<doc>Returns number of elements matching `xpath`</doc>
+<arguments>
+<arg>xpath=//ul[@id='saved-cards']/li[2]/label/span</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20171011 12:07:04.930" level="INFO">${count} = 1</msg>
+<status status="PASS" endtime="20171011 12:07:04.930" starttime="20171011 12:07:04.883"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Count of Payment Element Size ${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:04.931" starttime="20171011 12:07:04.930"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${count}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:04.932" starttime="20171011 12:07:04.931"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>Double Click Element</arg>
+<arg>xpath=//ul[@id='saved-cards']/li[1]/label</arg>
+<arg>ELSE</arg>
+<arg>Payment Detail</arg>
+</arguments>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//ul[@id='saved-cards']/li[1]/label</arg>
+</arguments>
+<msg timestamp="20171011 12:07:04.933" level="INFO">Double clicking element 'xpath=//ul[@id='saved-cards']/li[1]/label'.</msg>
+<status status="PASS" endtime="20171011 12:07:04.989" starttime="20171011 12:07:04.933"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:07:04.989" starttime="20171011 12:07:04.932"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:07:04.990" starttime="20171011 12:07:04.882"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${CardNextButton}</arg>
+<arg>${Timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:05.046" starttime="20171011 12:07:04.990"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${CardNextButton}</arg>
+</arguments>
+<msg timestamp="20171011 12:07:05.047" level="INFO">Double clicking element 'xpath=//div[@id='payment-buttons-container']/button'.</msg>
+<status status="PASS" endtime="20171011 12:07:05.114" starttime="20171011 12:07:05.046"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<msg timestamp="20171011 12:07:15.114" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20171011 12:07:15.114" starttime="20171011 12:07:05.114"></status>
+</kw>
+<kw name="Scroll Page" library="base_ui_keywords">
+<doc>Scrolling current page [UP] or [DOWN]</doc>
+<arguments>
+<arg>DOWN</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${direction}'=='DOWN'</arg>
+<arg>Execute JavaScript</arg>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+</arguments>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+</arguments>
+<msg timestamp="20171011 12:07:15.151" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight)</msg>
+<status status="PASS" endtime="20171011 12:07:15.161" starttime="20171011 12:07:15.150"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:07:15.161" starttime="20171011 12:07:15.116"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${direction}'=='UP'</arg>
+<arg>Execute JavaScript</arg>
+<arg>window.scrollTo(0, 0);</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:15.162" starttime="20171011 12:07:15.162"></status>
+</kw>
+<status status="PASS" endtime="20171011 12:07:15.163" starttime="20171011 12:07:15.115"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element specified with `locator` is visible.</doc>
+<arguments>
+<arg>${PlaceOrder}</arg>
+<arg>${Timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:15.228" starttime="20171011 12:07:15.163"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double click element identified by `locator`.</doc>
+<arguments>
+<arg>${PlaceOrder}</arg>
+</arguments>
+<msg timestamp="20171011 12:07:15.229" level="INFO">Double clicking element 'xpath=//div[@id='review-buttons-container']/button'.</msg>
+<status status="PASS" endtime="20171011 12:07:15.267" starttime="20171011 12:07:15.229"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>20</arg>
+</arguments>
+<msg timestamp="20171011 12:07:35.267" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" endtime="20171011 12:07:35.267" starttime="20171011 12:07:15.267"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>${OrderNo}</arg>
+</arguments>
+<assign>
+<var>${PO_NO}</var>
+</assign>
+<msg timestamp="20171011 12:07:35.365" level="INFO">${PO_NO} = #101004368</msg>
+<status status="PASS" endtime="20171011 12:07:35.365" starttime="20171011 12:07:35.268"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${PO_NO}</arg>
+</arguments>
+<status status="PASS" endtime="20171011 12:07:35.366" starttime="20171011 12:07:35.365"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${PO_NO}</arg>
+</arguments>
+<msg timestamp="20171011 12:07:35.367" level="INFO">#101004368</msg>
+<status status="PASS" endtime="20171011 12:07:35.367" starttime="20171011 12:07:35.366"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${ExcelLocation1}, ${AppendOrderNo_Sheet}, ${RowNumber}, ${ColumnNumber}, ${PO_NO}</arg>
+</arguments>
+<assign>
+<var>@{ExcelFileWiteOrderNumberFile_List}</var>
+</assign>
+<msg timestamp="20171011 12:07:35.374" level="FAIL">Variable '${RowNumber}' not found.</msg>
+<status status="FAIL" endtime="20171011 12:07:35.374" starttime="20171011 12:07:35.367"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.375" starttime="20171011 12:04:33.126"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.375" starttime="20171011 12:04:33.125"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.375" starttime="20171011 12:04:33.022"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.376" starttime="20171011 12:02:46.013"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.376" starttime="20171011 12:01:38.418"></status>
+</kw>
+<status status="FAIL" endtime="20171011 12:07:35.376" starttime="20171011 12:01:38.418"></status>
+</kw>
+<tags>
+<tag>Login with Existing Patient &gt;&gt; Fetch Order Number &gt;&gt;&gt;&gt; Write in Excel</tag>
+</tags>
+<status status="FAIL" endtime="20171011 12:07:35.377" critical="yes" starttime="20171011 12:01:38.344">Variable '${RowNumber}' not found.</status>
+</test>
+<status status="FAIL" endtime="20171011 12:07:35.393" starttime="20171011 12:01:36.071"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">Login with Existing Patient &gt;&gt; Fetch Order Number &gt;&gt;&gt;&gt; Write in Excel</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="SalesTaxPlacingOrder" pass="0">SalesTaxPlacingOrder</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20171011 12:01:37.488" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Resource\Input.robot': Data source does not exist.</msg>
+<msg timestamp="20171011 12:01:38.186" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Keyword\WellevateRegistration.robot': Resource file '..\LocatorAndInput\Locator.robot' does not exist.</msg>
+<msg timestamp="20171011 12:01:38.255" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Keyword\base_ui_keywords.robot': Resource file '..\resources\dependencies.robot' does not exist.</msg>
+<msg timestamp="20171011 12:01:38.278" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Resource\Locator.robot': Data source does not exist.</msg>
+<msg timestamp="20171011 12:01:38.292" level="ERROR">Error in file 'C:\Users\vivek.jha\git\QaAutomation\RobotTests\wellevateUI\SalesTaxCheckoutScript\Keyword\WellevateRegistration.robot': Importing test library 'AutoItLibrary' failed: ImportError: No module named AutoItLibrary
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Windows\SYSTEM32\python27.zip
+  C:\Python27\DLLs
+  C:\Python27\lib
+  C:\Python27\lib\plat-win
+  C:\Python27\lib\lib-tk
+  C:\Python27
+  C:\Python27\lib\site-packages
+  C:\Python27\lib\site-packages\xlsxwriter-0.9.8-py2.7.egg</msg>
+</errors>
+</robot>
